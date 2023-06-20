@@ -63,8 +63,8 @@ int* incrementaHora(int h, int m) {
 }
 
 // Informações da rede
-const char* ssid = "ATEL-UNIVERSITARIOS (2/5GHZ)";
-const char* password = "rorakaulan";
+const char* ssid = "[Nome da Rede]";
+const char* password = "[Senha da Rede]";
 
 void setup(void) {
   Serial.begin(9600);
@@ -117,7 +117,7 @@ void loop() {
     HTTPClient http;
 
     //Faz um GET request para pegar a solicitação mais recente na API
-    resposta = httpGETRequest("http://api-demeter.herokuapp.com/reqCultura");
+    resposta = httpGETRequest("[ENDPOINT]");
     JSONVar objeto = JSON.parse(resposta);
 
     // Armazena os valores recebidos pela api
@@ -175,7 +175,7 @@ void loop() {
         serializeJson(doc, requestBody);
         
         // Faz um POST request com as novas informações para manter o sistema acionando automaticamente a cada dois minutos
-        httpPOSTRequestJSON("http://api-demeter.herokuapp.com/reqCultura", requestBody);
+        httpPOSTRequestJSON("[ENDPOINT]", requestBody);
         delay(5000);
       }
     } else {
